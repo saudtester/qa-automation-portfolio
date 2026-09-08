@@ -8,6 +8,7 @@ test('user can login successfully',async({loginPage, page})=>{
     await loginPage.login(loginData.validUser, loginData.validPassword);
     
     await expect(page).toHaveURL(/inventory/);
+
 });
 
 test('user cannot login with invalid username',async({loginPage})=>{
