@@ -9,9 +9,15 @@ export class CartPage {
         this.cartQuantity = page.locator('[data-test="item-quantity"]');
 
         this.checkoutButton = page.getByRole('button',{name:'Checkout'});
+
+        this.continueShoppingButton = page.getByRole('button',{name:'Continue Shopping'});
     }
 
     async proceedToCheckout(){
         await this.checkoutButton.click();
+    }
+
+    async continueShopping() {
+    await this.continueShoppingButton.click();
     }
 }
