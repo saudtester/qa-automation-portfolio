@@ -7,5 +7,11 @@ export class CartPage {
             .filter({hasText: 'Sauce Labs Backpack'});
         
         this.cartQuantity = page.locator('[data-test="item-quantity"]');
+
+        this.checkoutButton = page.getByRole('button',{name:'Checkout'});
+    }
+
+    async proceedToCheckout(){
+        await this.checkoutButton.click();
     }
 }
