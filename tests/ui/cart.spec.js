@@ -1,6 +1,6 @@
 import {expect} from '@playwright/test';
-import {test} from '../fixtures/testFixtures';
-import { loginData } from '../test-data/loginData';
+import {test} from '../../fixtures/testFixtures';
+import { loginData } from '../../test-data/loginData';
 
 test('user can view backpack in cart',async({loginPage, productsPage, cartPage, page})=>{
     await loginPage.goto();
