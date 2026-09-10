@@ -2,16 +2,18 @@ import {expect} from '@playwright/test';
 import {test} from '../../fixtures/testFixtures';
 import { loginData } from '../../test-data/loginData';
 
+test.describe('Products',()=>{
 
-test('user can add backpack to cart', async({loginPage, productsPage})=>{
-    await loginPage.goto();
+    test('user can add backpack to cart', async({loginPage, productsPage})=>{
+        await loginPage.goto();
     
-    await loginPage.login(loginData.validUser,loginData.validPassword);
+        await loginPage.login(loginData.validUser,loginData.validPassword);
 
-    await expect(productsPage.productsTitle).toBeVisible();
+        await expect(productsPage.productsTitle).toBeVisible();
 
-    await productsPage.addBackpackToCart();
+        await productsPage.addBackpackToCart();
 
-    await expect(productsPage.cartLink).toHaveText('1');
+        await expect(productsPage.cartLink).toHaveText('1');
 
+    });
 });
