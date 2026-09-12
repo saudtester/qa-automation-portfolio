@@ -7,6 +7,7 @@ export const apiTest = base.extend({
 
         await use(apiContext);
         
+        // Dispose of the API context after the test to release resources.
         await apiContext.dispose();
 
     }

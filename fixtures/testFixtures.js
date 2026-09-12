@@ -5,6 +5,7 @@ import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { OverviewPage } from '../pages/OverviewPage';
 
+// Create reusable Page Object Model fixtures for UI tests.
 export const test = base.extend({
     loginPage: async({page},use)=>{
         const loginPage = new LoginPage(page);

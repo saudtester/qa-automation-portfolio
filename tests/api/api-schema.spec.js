@@ -12,6 +12,7 @@ test('GET user response matches schema', async({apiContext})=>{
 
     const body = await response.json();
 
+    // Validate the API response against the defined user schema.
     const isValid = validate(body.data);
 
     expect(isValid, JSON.stringify(validate.errors)).toBe(true);

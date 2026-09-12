@@ -1,3 +1,4 @@
+// Define the expected structure of a ReqRes user response for schema validation.
 export const userSchema = {
     type: 'object',
 

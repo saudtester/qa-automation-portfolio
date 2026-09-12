@@ -73,6 +73,7 @@ test('GET users with page parameter', async({apiContext})=>{
         }
     );
 
+    // Measure the API response time for basic performance validation.
     const responseTime = Date.now() - startTime;
 
     const headers = response.headers();
@@ -159,6 +160,7 @@ test('GET users with out of range page', async({apiContext})=>{
     expect(body.data).toHaveLength(0);
 });
 
+// Run the same GET validation against multiple user IDs.
 for(const userId of userIds){
     test(`GET user ${userId} returns successfully`, async({apiContext})=>{
     const response = await apiContext.get(`https://reqres.in/api/users/${userId}`);

@@ -4,6 +4,7 @@ import { loginData } from "../../test-data/loginData";
 import { LoginPage } from '../../pages/LoginPage';
 
 test('API test followed by UI verification', async({apiContext, page})=>{
+    // Retrieve test data through the API before continuing with the UI flow.
     const response = await apiContext.get('https://reqres.in/api/users/2');
 
     expect(response.status()).toBe(200);
