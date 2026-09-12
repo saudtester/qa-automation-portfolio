@@ -1,5 +1,5 @@
 export class OverviewPage{
-    constructor(page){
+    constructor(page) {
         this.page = page;
 
         this.overviewTitle = page.getByText('Checkout: Overview');
@@ -22,7 +22,7 @@ export class OverviewPage{
         this.successMessage = page.locator('[data-test="complete-header"]');
     }
 
-    async finishCheckout(){
+    async finishCheckout() {
         await this.finishButton.click();
     }
 }

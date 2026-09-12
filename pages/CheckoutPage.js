@@ -1,5 +1,5 @@
 export class CheckoutPage{
-    constructor(page){
+    constructor(page) {
         this.page = page;
         
         this.firstName = page.getByPlaceholder('First Name');
@@ -8,10 +8,10 @@ export class CheckoutPage{
 
         this.postalCode = page.getByPlaceholder('Zip/Postal Code');
 
-        this.continueButton = page.getByRole('button',{name:'Continue'});
+        this.continueButton = page.getByRole('button', { name: 'Continue'});
     }
 
-    async fillCustomerInformation(firstName, lastName, postalCode){
+    async fillCustomerInformation(firstName, lastName, postalCode) {
         await this.firstName.fill(firstName);
 
         await this.lastName.fill(lastName);
@@ -19,7 +19,7 @@ export class CheckoutPage{
         await this.postalCode.fill(postalCode);
     }
 
-    async continueToOverview(){
+    async continueToOverview() {
         await this.continueButton.click();
     }
 }

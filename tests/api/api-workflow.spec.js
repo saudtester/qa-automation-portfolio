@@ -12,6 +12,8 @@ test('create and update user', async({apiContext})=>{
         }
     );
 
+    expect(createResponse.status()).toBe(201);
+
     const createBody = await createResponse.json();
 
     const userId = createBody.id;
@@ -27,4 +29,10 @@ test('create and update user', async({apiContext})=>{
     );
 
     expect(updateResponse.status()).toBe(200);
+
+    const updateBody = await updateResponse.json();
+
+    expect(updateBody.name).toBe('Saud Malik');
+    
+    expect(updateBody.job).toBe('Senior QA Engineer');
 });

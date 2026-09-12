@@ -1,6 +1,6 @@
 export class CartPage {
 
-    constructor(page){
+    constructor(page) {
         this.page = page;
         
         this.backpackProduct = page.locator('[data-test="inventory-item"]')
@@ -18,6 +18,6 @@ export class CartPage {
     }
 
     async continueShopping() {
-    await this.continueShoppingButton.click();
+        await this.continueShoppingButton.click();
     }
 }

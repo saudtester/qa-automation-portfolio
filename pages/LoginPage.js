@@ -1,10 +1,10 @@
 export class LoginPage{
-    constructor(page){
+    constructor(page) {
         this.page = page;
         this.username = page.getByPlaceholder('Username');
         this.password = page.getByPlaceholder('Password');
-        this.loginButton = page.getByRole('button',{name:'Login'});
-        this.errorMessage = page.getByRole('heading',{name: /Epic Sadface/i});
+        this.loginButton = page.getByRole('button', { name: 'Login'});
+        this.errorMessage = page.getByRole('alert');
     }
 
     async goto(){

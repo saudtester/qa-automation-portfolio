@@ -28,14 +28,3 @@ test('POST creates a user', async({apiContext})=>{
 
 });
 
-test('POST rejects empty request body', async({apiContext})=>{
-    const response = await apiContext.post('https://reqres.in/api/users',
-        {
-            data:{}
-        }
-    );
-
-    console.log('Status ', response.status());
-    
-    console.log('Body ', await response.text());
-});

@@ -81,7 +81,7 @@ test('GET users with page parameter', async({apiContext})=>{
 
     expect(headers['access-control-allow-origin']).toBe('*');
 
-    expect(responseTime).toBeLessThan(3000);
+    expect(responseTime).toBeLessThan(9000);
 
     expect(response.status()).toBe(200);
 

@@ -1,5 +1,5 @@
 export class ProductsPage {
-    constructor(page){
+    constructor(page) {
         this.page = page;
         
         this.productsTitle = page.getByText('Products');
@@ -12,11 +12,11 @@ export class ProductsPage {
 
     }
 
-    async addBackpackToCart(){
+    async addBackpackToCart() {
         await this.backpackAddToCartButton.click();
     }
 
-    async goToCart(){
+    async goToCart() {
         await this.cartLink.click();
     }
 } 
