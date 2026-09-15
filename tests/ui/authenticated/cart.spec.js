@@ -1,13 +1,9 @@
 import {expect} from '@playwright/test';
-import {test} from '../../fixtures/testFixtures';
-import { loginData } from '../../test-data/loginData';
-
+import {test} from '../../../fixtures/testFixtures';
 test.describe('Cart', ()=>{
 
-    test('user can view backpack in cart',async({loginPage, productsPage, cartPage, page})=>{
-        await loginPage.goto();
-    
-        await loginPage.login(loginData.validUser, loginData.validPassword);
+    test('user can view backpack in cart',async({productsPage, cartPage, page})=>{
+        await page.goto('https://www.saucedemo.com/inventory.html');
 
         await expect(productsPage.productsTitle).toBeVisible();
 
@@ -24,10 +20,8 @@ test.describe('Cart', ()=>{
         await expect(page).toHaveURL(/checkout/i);
     });
 
-    test('user can continue shopping from cart',async({loginPage, productsPage, cartPage, page})=>{
-        await loginPage.goto();
-
-        await loginPage.login(loginData.validUser, loginData.validPassword);
+    test('user can continue shopping from cart',async({productsPage, cartPage, page})=>{
+        await page.goto('https://www.saucedemo.com/inventory.html');
 
         await productsPage.addBackpackToCart();
 

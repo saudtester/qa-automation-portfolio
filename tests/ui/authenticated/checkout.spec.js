@@ -1,15 +1,12 @@
 import {expect} from '@playwright/test';
-import {test} from '../../fixtures/testFixtures';
-import { loginData } from '../../test-data/loginData';
+import {test} from '../../../fixtures/testFixtures';
 
 test.describe('Checkout',()=>{
 
-    test('user can complete checkout successfully',async({loginPage, productsPage, cartPage, checkoutPage, 
+    test('user can complete checkout successfully',async({productsPage, cartPage, checkoutPage, 
     overviewPage, page})=>{
-        await loginPage.goto();
-
-        await loginPage.login(loginData.validUser, loginData.validPassword);
-
+        await page.goto('https://www.saucedemo.com/inventory.html');
+        
         await expect(productsPage.productsTitle).toBeVisible();
 
         await productsPage.addBackpackToCart();

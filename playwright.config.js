@@ -24,16 +24,60 @@ export default defineConfig({
   // Run the UI suite across the three major browser engines.
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+        name: 'setup',
+        testMatch: /auth\.setup\.js/,
     },
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+        name: 'api',
+        testMatch: /api\/.*\.spec\.js/,
     },
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+    name: 'chromium-authenticated',
+    dependencies: ['setup'],
+    testMatch: /ui\/authenticated\/.*\.spec\.js/,
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: 'playwright/.auth/user.json',
+      },
+    },
+    {
+    name: 'chromium-unauthenticated',
+    testMatch: /ui\/unauthenticated\/.*\.spec\.js/,
+    use: {
+      ...devices['Desktop Chrome'],
+    },
+    },
+    {
+    name: 'firefox-authenticated',
+    dependencies: ['setup'],
+    testMatch: /ui\/authenticated\/.*\.spec\.js/,
+    use: {
+      ...devices['Desktop Firefox'],
+      storageState: 'playwright/.auth/user.json',
+    },
+    },
+    {
+    name: 'firefox-unauthenticated',
+    testMatch: /ui\/unauthenticated\/.*\.spec\.js/,
+    use: {
+      ...devices['Desktop Firefox'],
+    },
+    },
+    {
+    name: 'webkit-authenticated',
+    dependencies: ['setup'],
+    testMatch: /ui\/authenticated\/.*\.spec\.js/,
+    use: {
+      ...devices['Desktop Safari'],
+      storageState: 'playwright/.auth/user.json',
+    },
+    },
+    {
+    name: 'webkit-unauthenticated',
+    testMatch: /ui\/unauthenticated\/.*\.spec\.js/,
+    use: {
+      ...devices['Desktop Safari'],
+    },
     },
   ],
 });
