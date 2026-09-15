@@ -1,41 +1,46 @@
 # QA Automation Portfolio
 
-QA automation portfolio demonstrating Playwright UI automation, API testing, test design, and automation framework practices.
+QA automation portfolio demonstrating Playwright UI automation, API testing, test design, reusable automation framework practices, authentication/session reuse, and CI-based test execution.
 
 ## Tech Stack
 
-- Playwright
-- JavaScript
-- Node.js
-- REST API Testing
-- AJV Schema Validation
-- Page Object Model (POM)
-- Playwright Fixtures
-- Git & GitHub
-- GitHub Actions
+* Playwright
+* JavaScript
+* Node.js
+* REST API Testing
+* AJV Schema Validation
+* Page Object Model (POM)
+* Playwright Fixtures
+* Authentication & Session Reuse
+* Git & GitHub
+* GitHub Actions
 
 ## Project Overview
 
-This project demonstrates a structured QA automation framework built with Playwright and JavaScript. It includes UI automation, REST API testing, reusable Page Object Models, fixtures, test data management, API schema validation, and automated test execution through GitHub Actions.
+This project demonstrates a structured QA automation framework built with Playwright and JavaScript. It includes UI automation, REST API testing, reusable Page Object Models, custom fixtures, test data management, API schema validation, authentication state reuse, and automated test execution through GitHub Actions.
 
-The project is designed to demonstrate practical automation framework design, maintainability, reusable test components, and CI-based test execution.
+The project is designed to demonstrate practical automation framework design, maintainability, reusable test components, browser coverage, API testing, and CI-based test execution.
 
 ## Project Structure
 
 ```text
 qa-automation-portfolio/
-├── pages/              # Page Object Models
-├── fixtures/           # Custom Playwright fixtures
+
+├── pages/                       # Page Object Models
+├── fixtures/                    # Custom Playwright fixtures
 ├── tests/
-│   ├── ui/             # UI automation tests
-│   └── api/            # API automation tests
-├── test-data/          # Test data
-├── api/                # API client utilities
-├── schemas/            # API schemas for validation
+│   ├── ui/
+│   │   ├── authenticated/       # Tests using saved authentication state
+│   │   └── unauthenticated/     # Tests for login and unauthenticated flows
+│   ├── api/                     # API automation tests
+│   └── auth.setup.js            # Authentication setup and storage state
+├── test-data/                   # Test data
+├── api/                         # API client utilities
+├── schemas/                     # API schemas for validation
 ├── playwright.config.js
 ├── package.json
 └── .github/
-    └── workflows/      # GitHub Actions CI workflow
+    └── workflows/               # GitHub Actions CI workflow
 ```
 
 ## UI Automation
@@ -44,22 +49,49 @@ The UI automation suite uses Playwright with JavaScript and follows the Page Obj
 
 ### Covered UI Workflows
 
-- Login validation
-- Product selection
-- Add to cart
-- Cart validation
-- Checkout workflow
-- Customer information validation
-- Order completion
+* Login validation
+* Product selection
+* Add to cart
+* Cart validation
+* Checkout workflow
+* Customer information validation
+* Order completion
 
 ### UI Framework Practices
 
-- Page Object Model (POM)
-- Custom Playwright fixtures
-- Reusable page methods
-- Test data separation
-- Playwright role, text, placeholder, and attribute-based locators
-- Web-first assertions
+* Page Object Model (POM)
+* Custom Playwright fixtures
+* Reusable page methods
+* Test data separation
+* Playwright role, text, placeholder, and attribute-based locators
+* Web-first assertions
+* Cross-browser UI testing with Chromium, Firefox, and WebKit
+
+## Authentication & Session Reuse
+
+The project uses Playwright's `storageState` functionality to reuse authenticated browser state across UI tests.
+
+The authentication setup:
+
+1. Logs in once using the SauceDemo test account.
+2. Saves the authenticated browser context state to `playwright/.auth/user.json`.
+3. Authenticated UI projects reuse the saved state instead of performing the login steps before every test.
+
+UI tests are separated into authenticated and unauthenticated areas:
+
+```text
+tests/ui/
+├── authenticated/
+│   ├── products.spec.js
+│   ├── cart.spec.js
+│   └── checkout.spec.js
+└── unauthenticated/
+    └── login.spec.js
+```
+
+The login tests continue to test the actual authentication functionality, while authenticated tests start with the saved authentication state.
+
+The authentication state file is excluded from Git and is not committed to the repository.
 
 ## API Automation
 
@@ -73,38 +105,53 @@ The create and update tests validate the expected API responses and contract beh
 
 ### Covered API Scenarios
 
-- GET user validation
-- POST user creation
-- PUT user update
-- PATCH user update
-- DELETE user validation
-- API response headers and status codes
-- Response body validation
-- API schema validation using AJV
-- API workflow and request chaining
-- Data-driven API testing
+* GET user validation
+* POST user creation
+* PUT user update
+* PATCH user update
+* DELETE user validation
+* API response headers and status codes
+* Response body validation
+* API schema validation using AJV
+* API workflow and request chaining
+* Data-driven API testing
 
 ### API Framework Practices
 
-- Dedicated API client
-- Custom API fixtures
-- API test data separation
-- Reusable API context
-- Schema-based response validation
-- Environment variable-based API authentication
+* Dedicated API client
+* Custom API fixtures
+* API test data separation
+* Reusable API context
+* Schema-based response validation
+* Environment variable-based API authentication
+
+API tests run independently from the browser projects and are executed once rather than being repeated across Chromium, Firefox, and WebKit.
+
+## Test Projects
+
+The Playwright configuration separates test execution into dedicated projects:
+
+* `setup` — prepares authenticated browser state
+* `api` — runs API tests independently
+* `chromium-authenticated` — authenticated UI tests on Chromium
+* `chromium-unauthenticated` — login tests on Chromium
+* `firefox-authenticated` — authenticated UI tests on Firefox
+* `firefox-unauthenticated` — login tests on Firefox
+* `webkit-authenticated` — authenticated UI tests on WebKit
+* `webkit-unauthenticated` — login tests on WebKit
 
 ## Continuous Integration
 
-The project uses GitHub Actions to automatically execute Playwright tests when changes are pushed to the main branch.
+The project uses GitHub Actions to automatically execute the Playwright test suite when changes are pushed to the `main` branch.
 
 ### CI Workflow
 
-- Checkout the repository
-- Set up Node.js
-- Install project dependencies
-- Install Playwright browsers
-- Run Playwright tests on Chromium
-- Upload the Playwright HTML report as a GitHub Actions artifact
+* Checkout the repository
+* Set up Node.js
+* Install project dependencies
+* Install Playwright browsers
+* Run the complete Playwright test suite
+* Upload the Playwright HTML report as a GitHub Actions artifact
 
 The API authentication key is stored securely as a GitHub Actions secret and is not committed to the repository.
 
@@ -112,9 +159,9 @@ The API authentication key is stored securely as a GitHub Actions secret and is 
 
 ### Prerequisites
 
-- Node.js installed
-- Git installed
-- A ReqRes API key
+* Node.js installed
+* Git installed
+* A ReqRes API key
 
 ### Installation
 
@@ -122,7 +169,9 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/saudtester/qa-automation-portfolio.git
+
 cd qa-automation-portfolio
+
 npm install
 ```
 
@@ -136,7 +185,7 @@ npx playwright install
 
 The API tests require a ReqRes API key.
 
-1. Create a ReqRes account and generate your API key from the [ReqRes API Keys page](https://app.reqres.in/?next=/api-keys).
+1. Create a ReqRes account and generate your API key from the ReqRes API Keys page.
 2. Create a `.env` file in the project root.
 3. Add your API key:
 
@@ -166,10 +215,22 @@ Run API tests:
 npx playwright test tests/api
 ```
 
-Run tests on Chromium:
+Run authenticated Chromium tests:
 
 ```bash
-npx playwright test --project=chromium
+npx playwright test --project=chromium-authenticated
+```
+
+Run unauthenticated Chromium tests:
+
+```bash
+npx playwright test --project=chromium-unauthenticated
+```
+
+List all discovered tests and projects:
+
+```bash
+npx playwright test --list
 ```
 
 ### View HTML Report
