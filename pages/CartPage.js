@@ -11,13 +11,19 @@ export class CartPage {
         this.checkoutButton = page.getByRole('button',{name:'Checkout'});
 
         this.continueShoppingButton = page.getByRole('button',{name:'Continue Shopping'});
+
+        this.removeBackpackButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
     }
 
-    async proceedToCheckout(){
+    async proceedToCheckout() {
         await this.checkoutButton.click();
     }
 
     async continueShopping() {
         await this.continueShoppingButton.click();
+    }
+
+    async removeBackpackFromCart() {
+        await this.removeBackpackButton.click();
     }
 }

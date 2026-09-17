@@ -9,6 +9,12 @@ export class CheckoutPage{
         this.postalCode = page.getByPlaceholder('Zip/Postal Code');
 
         this.continueButton = page.getByRole('button', { name: 'Continue'});
+
+        this.firstNameError = page.getByText('Error: First Name is required');
+
+        this.lastNameError = page.getByText('Error: Last Name is required');
+
+        this.postalCodeError = page.getByText('Error: Postal Code is required');
     }
 
     async fillCustomerInformation(firstName, lastName, postalCode) {

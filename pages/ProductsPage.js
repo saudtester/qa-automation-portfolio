@@ -7,6 +7,8 @@ export class ProductsPage {
         this.backpackProduct = page.getByText('Sauce Labs Backpack');
         
         this.backpackAddToCartButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+
+        this.bikeLightAddToCartButton = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]');
         
         this.cartLink = page.locator('[data-test="shopping-cart-link"]');
 
@@ -14,6 +16,10 @@ export class ProductsPage {
 
     async addBackpackToCart() {
         await this.backpackAddToCartButton.click();
+    }
+
+    async addBikeLightToCart() {
+        await this.bikeLightAddToCartButton.click();
     }
 
     async goToCart() {

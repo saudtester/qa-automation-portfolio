@@ -13,4 +13,16 @@ test.describe('Products',()=>{
         await expect(productsPage.cartLink).toHaveText('1');
 
     });
+
+    test('cart count updates when multiple products are added', async({productsPage, page})=>{
+        await page.goto('https://www.saucedemo.com/inventory.html');
+
+        await productsPage.addBackpackToCart();
+
+        await expect (productsPage.cartLink).toHaveText('1');
+
+        await productsPage.addBikeLightToCart();
+
+        await expect(productsPage.cartLink).toHaveText('2');
+    });
 });
