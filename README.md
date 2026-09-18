@@ -99,7 +99,7 @@ The API automation suite uses Playwright's API testing capabilities to validate 
 
 ### API Test Scope
 
-The API tests currently use ReqRes demo `/api/users` endpoints. These endpoints provide fixture-based test data and are used to validate API contract behavior, including HTTP methods, status codes, response headers, response structures, and schema validation.
+The API tests currently use ReqRes demo `/api/users` and `/api/login` endpoints. These endpoints provide fixture-based test data and are used to validate API contract behavior, including HTTP methods, status codes, response headers, response structures, error responses, and schema validation.
 
 The create and update tests validate the expected API responses and contract behavior; they are not intended to verify persistent database changes.
 
@@ -112,6 +112,7 @@ The create and update tests validate the expected API responses and contract beh
 * DELETE user validation
 * API response headers and status codes
 * Response body validation
+* Negative API testing and error response validation
 * API schema validation using AJV
 * API workflow and request chaining
 * Data-driven API testing
