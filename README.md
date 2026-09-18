@@ -1,6 +1,6 @@
 # QA Automation Portfolio
 
-QA automation portfolio demonstrating Playwright UI automation, API testing, test design, reusable automation framework practices, authentication/session reuse, and CI-based test execution.
+QA automation portfolio demonstrating Playwright UI automation, API testing, test design, reusable automation framework practices, authentication/session reuse, centralized base URL configuration, and CI-based test execution.
 
 ## Tech Stack
 
@@ -17,7 +17,7 @@ QA automation portfolio demonstrating Playwright UI automation, API testing, tes
 
 ## Project Overview
 
-This project demonstrates a structured QA automation framework built with Playwright and JavaScript. It includes UI automation, REST API testing, reusable Page Object Models, custom fixtures, test data management, API schema validation, authentication state reuse, and automated test execution through GitHub Actions.
+This project demonstrates a structured QA automation framework built with Playwright and JavaScript. It includes UI automation, REST API testing, reusable Page Object Models, custom fixtures, test data management, API schema validation, authentication state reuse, centralized base URL configuration, and automated test execution through GitHub Actions.
 
 The project is designed to demonstrate practical automation framework design, maintainability, reusable test components, browser coverage, API testing, and CI-based test execution.
 
@@ -63,6 +63,7 @@ The UI automation suite uses Playwright with JavaScript and follows the Page Obj
 * Custom Playwright fixtures
 * Reusable page methods
 * Test data separation
+* Centralized base URL configuration
 * Playwright role, text, placeholder, and attribute-based locators
 * Web-first assertions
 * Cross-browser UI testing with Chromium, Firefox, and WebKit

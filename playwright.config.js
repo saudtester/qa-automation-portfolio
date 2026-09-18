@@ -17,6 +17,9 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
+    // Base URL for UI tests.
+    baseURL: 'https://www.saucedemo.com',
+
     // Capture a trace when a test fails and is retried.
     trace: 'on-first-retry',
   },

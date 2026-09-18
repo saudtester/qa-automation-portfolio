@@ -6,7 +6,7 @@ test.describe('Checkout',()=>{
     test('user can complete checkout successfully',
         { tag: ['@smoke', '@regression'] }, async({productsPage, cartPage, checkoutPage, 
     overviewPage, page})=>{
-        await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
         
         await expect(productsPage.productsTitle).toBeVisible();
 
@@ -45,7 +45,7 @@ test.describe('Checkout',()=>{
 
     test('user cannot continue checkout without first name', async({productsPage, cartPage,
         checkoutPage, page})=>{
-        await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
         
         await expect(productsPage.productsTitle).toBeVisible();
 
@@ -67,7 +67,7 @@ test.describe('Checkout',()=>{
 
     test('user cannot continue checkout without last name', async({productsPage, cartPage,
         checkoutPage, page})=>{
-        await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
         
         await expect(productsPage.productsTitle).toBeVisible();
 
@@ -90,26 +90,26 @@ test.describe('Checkout',()=>{
 
     test('user cannot continue checkout without postal code', async({productsPage,cartPage,
     checkoutPage,page})=>{
-    await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
 
-    await expect(productsPage.productsTitle).toBeVisible();
+        await expect(productsPage.productsTitle).toBeVisible();
 
-    await productsPage.addBackpackToCart();
+        await productsPage.addBackpackToCart();
 
-    await productsPage.goToCart();
+        await productsPage.goToCart();
 
-    await cartPage.proceedToCheckout();
+        await cartPage.proceedToCheckout();
 
-    await expect(page).toHaveURL(/checkout/i);
+        await expect(page).toHaveURL(/checkout/i);
 
-    await checkoutPage.firstName.fill('Saud');
+        await checkoutPage.firstName.fill('Saud');
 
-    await checkoutPage.lastName.fill('Malik');
+        await checkoutPage.lastName.fill('Malik');
 
-    await expect(checkoutPage.postalCodeError).toBeHidden();
+        await expect(checkoutPage.postalCodeError).toBeHidden();
 
-    await checkoutPage.continueToOverview();
+        await checkoutPage.continueToOverview();
 
-    await expect(checkoutPage.postalCodeError).toBeVisible();
+        await expect(checkoutPage.postalCodeError).toBeVisible();
     });
 });

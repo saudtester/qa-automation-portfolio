@@ -3,7 +3,7 @@ import {test} from '../../../fixtures/testFixtures';
 test.describe('Cart', ()=>{
 
     test('user can view backpack in cart',async({productsPage, cartPage, page})=>{
-        await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
 
         await expect(productsPage.productsTitle).toBeVisible();
 
@@ -21,7 +21,7 @@ test.describe('Cart', ()=>{
     });
 
     test('user can continue shopping from cart',async({productsPage, cartPage, page})=>{
-        await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
 
         await productsPage.addBackpackToCart();
 
@@ -35,7 +35,7 @@ test.describe('Cart', ()=>{
     });
 
     test('user can remove backpack from cart', async({productsPage, cartPage, page})=>{
-        await page.goto('https://www.saucedemo.com/inventory.html');
+        await page.goto('/inventory.html');
 
         await productsPage.addBackpackToCart();
 
