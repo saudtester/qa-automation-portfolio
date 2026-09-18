@@ -3,7 +3,8 @@ import {test} from '../../../fixtures/testFixtures';
 
 test.describe('Checkout',()=>{
 
-    test('user can complete checkout successfully',async({productsPage, cartPage, checkoutPage, 
+    test('user can complete checkout successfully',
+        { tag: ['@smoke', '@regression'] }, async({productsPage, cartPage, checkoutPage, 
     overviewPage, page})=>{
         await page.goto('https://www.saucedemo.com/inventory.html');
         

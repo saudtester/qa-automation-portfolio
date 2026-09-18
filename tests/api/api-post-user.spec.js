@@ -48,7 +48,8 @@ test('POST creates a user', async({apiContext})=>{
 
 });
 
-test('POST login fails without password', async({apiContext})=>{
+test('POST login fails without password', 
+    {tag: '@regression'}, async({apiContext})=>{
     const response = await apiContext.post('https://reqres.in/api/login',
         {
             data:

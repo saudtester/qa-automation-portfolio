@@ -4,7 +4,8 @@ import {loginData} from '../../../test-data/loginData';
 
 test.describe('Login',()=>{
 
-    test('user can login successfully',async({loginPage, page})=>{
+    test('user can login successfully', 
+        { tag: ['@smoke', '@regression'] }, async({loginPage, page})=>{
         await loginPage.goto();
     
         await loginPage.login(loginData.validUser, loginData.validPassword);

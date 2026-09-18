@@ -3,7 +3,8 @@ import {test} from '../../../fixtures/testFixtures';
 
 test.describe('Products',()=>{
 
-    test('user can add backpack to cart', async({productsPage, page})=>{
+    test('user can add backpack to cart', 
+        { tag: ['@smoke' , '@regression'] }, async({productsPage, page})=>{
         await page.goto('https://www.saucedemo.com/inventory.html');
         
         await expect(productsPage.productsTitle).toBeVisible();
@@ -14,7 +15,8 @@ test.describe('Products',()=>{
 
     });
 
-    test('cart count updates when multiple products are added', async({productsPage, page})=>{
+    test('cart count updates when multiple products are added', 
+        { tag: '@regression' }, async({productsPage, page})=>{
         await page.goto('https://www.saucedemo.com/inventory.html');
 
         await productsPage.addBackpackToCart();

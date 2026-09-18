@@ -2,7 +2,8 @@ import { expect } from '@playwright/test';
 import { apiTest as test } from '../../fixtures/apiFixtures';
 import { userIds } from '../../test-data/apiData';
 
-test('GET user returns successfully', async({apiContext})=>{
+test('GET user returns successfully', 
+    {tag: ['@smoke', '@regression']}, async({apiContext})=>{
     const userId = 2;
 
     const response = await apiContext.get(`https://reqres.in/api/users/${userId}`,

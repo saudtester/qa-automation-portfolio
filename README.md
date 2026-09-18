@@ -93,6 +93,20 @@ The login tests continue to test the actual authentication functionality, while 
 
 The authentication state file is excluded from Git and is not committed to the repository.
 
+## Test Tagging
+
+The test suite uses Playwright tags to organize tests into smoke and regression groups.
+
+Smoke tests represent a smaller set of critical workflows, while regression tests provide broader coverage. Some critical smoke tests are also tagged as regression tests.
+
+Tests can be filtered using Playwright's `--grep` option:
+
+```bash
+npx playwright test --grep "@smoke"
+npx playwright test --grep "@regression"
+npx playwright test --grep "@smoke|@regression"
+```
+
 ## API Automation
 
 The API automation suite uses Playwright's API testing capabilities to validate REST API behavior.
