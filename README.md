@@ -158,16 +158,17 @@ The Playwright configuration separates test execution into dedicated projects:
 
 ## Continuous Integration
 
-The project uses GitHub Actions to automatically execute the Playwright test suite when changes are pushed to the `main` branch.
+The project uses GitHub Actions to automatically execute the Playwright test suite when changes are pushed to the `main` branch or when pull requests target the `main` branch.
 
 ### CI Workflow
 
 * Checkout the repository
-* Set up Node.js
+* Set up Node.js with npm dependency caching
 * Install project dependencies
 * Install Playwright browsers
 * Run the complete Playwright test suite
 * Upload the Playwright HTML report as a GitHub Actions artifact
+* Upload Playwright test results when the workflow fails
 
 The API authentication key is stored securely as a GitHub Actions secret and is not committed to the repository.
 
